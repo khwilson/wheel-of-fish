@@ -1,0 +1,26 @@
+#machine {
+  height: 400px;
+  border-bottom: 10px solid rgb(72, 158, 48);
+  background-color: #EB6B56;
+  border-top: 20px dotted #B8312F;
+}
+
+.randomizeMachine {
+  width: 100px;
+  height: 100px;
+}
+
+.randomizeMachine img {
+  width: 100px;
+  height: 100px;
+}
+
+.btn-group-randomize {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: auto;
+}
+
+.btn-group-randomize div {
+  width: auto !important;
+}
