@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/jQuery-SlotMachine/dist/jquery.slotmachine.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="bower_components/jQuery-SlotMachine/dist/jquery.slotmachine.js"></script>
+
+    <title>Wheel of Fish</title>
+
+    <style>
+#machine {
+    height: 400px;
+    border-bottom: 10px solid rgb(72, 158, 48);
+    background-color: #EB6B56;
+    border-top: 20px dotted #B8312F;
+}
+
+.randomizeMachine {
+    width: 100px;
+    height: 100px;
+}
+
+.randomizeMachine img {
+  width: 100px;
+  height: 100px;
+}
+
+.btn-group-randomize {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: auto;
+}
+
+.btn-group-randomize div {
+    width: auto !important;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row content">
+<div id="randomize">
+      <div class="content container" style="text-align: center;max-width: 900px;">
+        <h1>Wheel of Fish!</h1>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <div>
+              <div id="machine0" class="randomizeMachine">
+                <div><img src="img/octopus.svg" /></div>
+                <div><img src="img/poop.svg" /></div>
+                <div><img src="img/salmon.svg" /></div>
+                <div><img src="img/eel.svg" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div>
+              <div id="machine1" class="randomizeMachine">
+                <div><img src="img/octopus.svg" /></div>
+                <div><img src="img/poop.svg" /></div>
+                <div><img src="img/salmon.svg" /></div>
+                <div><img src="img/eel.svg" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div>
+              <div id="machine2" class="randomizeMachine">
+                <div><img src="img/octopus.svg" /></div>
+                <div><img src="img/poop.svg" /></div>
+                <div><img src="img/salmon.svg" /></div>
+                <div><img src="img/eel.svg" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="btn-group btn-group-justified btn-group-randomize" role="group">
+            <div id="ranomizeButton" type="button" class="btn btn-danger btn-lg">Shuffle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const NUM_MACHINES = 3
+
+      $(document).ready(function () {
+        let machines = []
+        for (let i = 0; i < NUM_MACHINES; ++i) {
+          let machine = $('#machine' + i).slotMachine({
+            active: i,
+            delay: 500,
+            direction: i % 2 == 0 ? 'up' : 'down'
+          })
+          machines.push(machine)
+        }
+
+        $("#ranomizeButton").click(function (){
+          for (let i in machines) {
+            setTimeout(function () {
+              machines[i].shuffle(5)
+            }, i * 500)
+          }
+        })
+      });
+    </script>
+
+  </body>
+</html>
